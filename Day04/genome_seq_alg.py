@@ -15,7 +15,7 @@ def count_genome_in_dna(dna, find, size):
     # loop through the dna string
     while (pos < len(dna)):
         subseq_pos = pos # represents the position in the subsequence
-        while (subseq_pos < (pos+size-len_find)):
+        while (subseq_pos <= (pos+size-len_find)):
             if (find == dna[subseq_pos:subseq_pos+len_find]):
                 # if the characters at the current position in the substring are find, increment count
                 count += 1
@@ -31,12 +31,12 @@ def count_genome_in_dna(dna, find, size):
 def count_genome_in_file(filename, find, size):
     count = 0
 
-    with open(filename, "rt") as dna:
+    with open(filename, "rt") as dna:   
         subseq = dna.read(size) # the subsequence of the dna to find the specific code
         len_find = len(find)
         while (subseq != ''): # keep going until end of file
             pos = 0 # position within the subsequence
-            while (pos < (size - len_find)):
+            while (pos <= (size - len_find)):
                 if (find == subseq[pos:pos+len_find]):
                     count += 1
                 pos += 1
